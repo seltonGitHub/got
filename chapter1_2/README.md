@@ -3,6 +3,8 @@
 
 ## 条件描述
 
+首先使用idea打开我们在1_2节完成代码的文件夹
+
 在src/main/resources/application.properties中配置如下
 
 ``` properties
