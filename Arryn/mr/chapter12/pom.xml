@@ -8,9 +8,9 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>team.arryn.aa</groupId>
+	<groupId>team.arryn.RRuunn</groupId>
 	<artifactId>chapter1</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>chapter1_2</name>
 	<description>GOT demo project chapter1_2</description>
 

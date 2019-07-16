@@ -1,4 +1,4 @@
-package team.arryn.aa.chapter1;
+package team.arryn.RRuunn.chapter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Chapter1ApplicationTests {
+public class Chapter12ApplicationTests {
 
 	@Test
 	public void contextLoads() {

@@ -1,11 +1,5 @@
 package team.targaryen.selton.chapter1.controller;
 
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.RestController;
-
-public class HelloTargaryen {
-
-=======
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +20,4 @@ public class HelloTargaryen {
     public String getMessageConfigValue() {
         return "I want to see the value of 'message'!";
     }
-
->>>>>>> bc33d84df1c50e048cbbe316e2d7ce237a524620
 }

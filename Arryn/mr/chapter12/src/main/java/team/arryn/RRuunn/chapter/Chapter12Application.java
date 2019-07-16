@@ -1,13 +1,13 @@
-package team.arryn.aa.chapter1;
+package team.arryn.RRuunn.chapter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chapter1Application {
+public class Chapter12Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Chapter1Application.class, args);
+		SpringApplication.run(Chapter12Application.class, args);
 	}
 
 }
