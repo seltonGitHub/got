@@ -1,6 +1,7 @@
 package team.targaryen.selton.chapter1.controller;
 
 import org.springframework.web.bind.annotation.*;
+import team.targaryen.selton.chapter1.VO.ResponseInfo;
 import team.targaryen.selton.chapter1.entity.User;
 
 import java.util.HashMap;
@@ -13,14 +14,14 @@ public class UserController {
     private static Map<Long, User> userIdAndUserMap = new HashMap<>();
 
     @GetMapping("{id}")
-    public User getUserByName(@PathVariable("id") long id) {
-       return null;
+    public User getUserByName(@PathVariable("id") long id) throws Exception {
+        throw new Exception("a exception occur");
     }
 
     @PostMapping("add")
-    public String addUser(User user) {
+    public ResponseInfo addUser(User user) {
         // save user
-        return "ok";
+        return new ResponseInfo();
     }
 
     @DeleteMapping("{id}")
