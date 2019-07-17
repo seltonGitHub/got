@@ -29,7 +29,6 @@ public class UsrDaoImpl implements UserDao {
      * @param id
      * @return 用户
      */
-    @GetMapping("id")
     @Override
     public User getUserById(int id) {
         return userMap.get(id);
