@@ -13,6 +13,8 @@ public class UserController {
 
     private static Map<Long, User> userIdAndUserMap = new HashMap<>();
 
+    //当访问这个接口时 这块代码将会抛出名为 Exception 的异常  并携带着一些异常信息 也就是 a exception occur
+    //这个异常会被我们的异常捕获器捕捉到 也就是将会跳转到 GlobalExceptionHandler 的 jsonErrorHandler中处理
     @GetMapping("{id}")
     public User getUserByName(@PathVariable("id") long id) throws Exception {
         throw new Exception("a exception occur");
