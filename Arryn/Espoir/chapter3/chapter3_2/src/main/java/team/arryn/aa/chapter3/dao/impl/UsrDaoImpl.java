@@ -1,6 +1,5 @@
 package team.arryn.aa.chapter3.dao.impl;
 
-import org.springframework.web.bind.annotation.*;
 import team.arryn.aa.chapter3.dao.UserDao;
 import team.arryn.aa.chapter3.model.PO.User;
 
@@ -54,7 +53,7 @@ public class UsrDaoImpl implements UserDao {
     @Override
     public int modifyUser(int id,User user) {
         int secModifyNum=0;
-        userMap.replace(user.getId(),user);
+        userMap.replace(id,user);
         return ++secModifyNum;
     }
 

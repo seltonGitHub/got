@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.*;
 import team.arryn.aa.chapter3.dao.UserDao;
 import team.arryn.aa.chapter3.dao.impl.UsrDaoImpl;
 import team.arryn.aa.chapter3.model.PO.User;
+import team.arryn.aa.chapter3.util.ExceptionEnum;
+import team.arryn.aa.chapter3.util.Result;
+import team.arryn.aa.chapter3.util.ResultUtil;
 
 @RestController
 @RequestMapping("user")
@@ -32,13 +35,12 @@ public class UserController {
      * @return 用户
      */
     @GetMapping("{id}")
-    public String selectUser(@PathVariable("id") int id) throws Exception {
-        int i=1/0;
+    public Result selectUser(@PathVariable("id") int id) throws Exception {
         User user = userDao.getUserById(id);
         if (user==null){
-            return "该用户不存在";
+            return ResultUtil.error(ExceptionEnum.USER_NOT_FIND);
         }else {
-           return user+"";
+           return ResultUtil.success(user);
         }
     }
 
