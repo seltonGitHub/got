@@ -19,6 +19,17 @@
 上传到git的时候需要commit -m
 -m后的信息需要指明任务代号
 
+> 提交案例
+
+``` git
+git clone https://github.com/seltonGitHub/got.git
+git checkout Targaryen
+#这一步写代码或者啥的
+git add .
+git commit -m "enhancement #1 完成1号任务了."
+git push origin Targaryen
+```
+
 比如[chapter1](#https://github.com/seltonGitHub/got/issues/1)任务,可以看到任务代号是#1,然后任务label是enhancement,就需要commit -m的信息以 **enhancement #1 我完成任务了(不是说就是写定了完成任务啥的,可以是任何你觉得不错的句子)**格式提交
 
 ## 贡献
