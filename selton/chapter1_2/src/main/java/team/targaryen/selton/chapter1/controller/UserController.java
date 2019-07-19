@@ -1,5 +1,6 @@
 package team.targaryen.selton.chapter1.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import team.targaryen.selton.chapter1.VO.ResponseInfo;
 import team.targaryen.selton.chapter1.entity.User;
@@ -9,6 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("user")
+@Slf4j
 public class UserController {
 
     private static Map<Long, User> userIdAndUserMap = new HashMap<>();
@@ -22,6 +24,8 @@ public class UserController {
 
     @PostMapping("add")
     public ResponseInfo addUser(User user) {
+        log.debug("this is debug log : addUser user {}", user);
+        log.info("this is info log: addUser user {}", user);
         // save user
         return new ResponseInfo();
     }
