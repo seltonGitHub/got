@@ -1,6 +1,5 @@
 package team.arryn.aa.chapter3.service.impl;
 
-
 import org.springframework.stereotype.Service;
 import team.arryn.aa.chapter3.dao.UserDao;
 import team.arryn.aa.chapter3.dao.impl.UserDaoImpl;
@@ -14,22 +13,37 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result addUser(User user) {
-        return userDao.addUser(user);
+        if (user==null && "".equals(user.getUsername())){
+            return new Result("用户名不能为空");
+        }else {
+            userDao.addUser(user);
+            return new Result("ok");
+        }
     }
 
     @Override
-    public Result getUserById(int id) {
-        return userDao.getUserById(id);
+    public Result getUserByUsername(int  id) {
+        User user = userDao.getUserByUsername(id);
+        if (user==null){
+            return new Result("userNotExist");
+        }else {
+            return new Result(user);
+        }
     }
 
     @Override
     public Result updateUser(int id,User user) {
-        return userDao.modifyUser(id,user);
+        userDao.modifyUser(id,user);
+        System.out.println(id+""+user);
+
+        return new Result("ok");
     }
 
     @Override
     public Result delUser(int id) {
-        return userDao.removeUser(id);
+        userDao.removeUser(id);
+        System.out.println(id);
+        return new Result("ok");
     }
 
 

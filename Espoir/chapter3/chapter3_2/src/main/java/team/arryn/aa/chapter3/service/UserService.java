@@ -5,7 +5,7 @@ import team.arryn.aa.chapter3.util.Result;
 
 public interface UserService {
     Result addUser(User user);
-    Result getUserById(int id);
+    Result getUserByUsername(int id);
     Result updateUser(int id,User user);
     Result delUser(int id);
 }

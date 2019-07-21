@@ -19,13 +19,12 @@ public class UserController {
 
     @GetMapping("{id}")
     public Result selectUser(@PathVariable("id") int id) throws Exception {
-        return userService.getUserById(id);
+        return userService.getUserByUsername(id);
     }
-
 
     @DeleteMapping("{id}")
     public Result delUser(@PathVariable("id") int id) {
-        return userService.getUserById(id);
+        return userService.delUser(id);
     }
 
     @PutMapping("{id}")

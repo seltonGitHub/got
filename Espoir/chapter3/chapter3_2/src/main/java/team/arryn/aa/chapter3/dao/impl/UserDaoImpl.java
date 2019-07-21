@@ -1,43 +1,39 @@
 package team.arryn.aa.chapter3.dao.impl;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import team.arryn.aa.chapter3.dao.UserDao;
 import team.arryn.aa.chapter3.model.PO.User;
-import team.arryn.aa.chapter3.util.Result;
-
-import java.util.HashMap;
-import java.util.Map;
+import team.arryn.aa.chapter3.util.JDBCUtils;
 
 public class UserDaoImpl implements UserDao {
-    static private Map<Integer,User> userMap=new HashMap<>();
-    private int id;
+    private JdbcTemplate jdbcTemplate=new JdbcTemplate(JDBCUtils.getDataSourse());
 
     @Override
-    public Result addUser(User user) {
-        id++;
-        user.setId(id);
-        userMap.put(id,user);
-        return new Result("ok");
+    public void addUser(User user) {
+        String sql="insert into user (username,password) values(?,?)";
+        jdbcTemplate.update(sql,user.getUsername(),user.getPassword());
     }
 
     @Override
-    public Result getUserById(int id) {
-        return new Result(userMap.get(id));
-    }
-
-
-    @Override
-    public Result removeUser( int id) {
-        int successRemoveNum=0;
-        userMap.remove(id);
-        return new Result(successRemoveNum);
+    public User getUserByUsername(int id) {
+        String sql="select * from user where id=?";
+        User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), id);
+        return user;
     }
 
 
     @Override
-    public Result modifyUser(int id,User user) {
-        int secModifyNum=0;
-        userMap.replace(id,user);
-        return new Result(secModifyNum);
+    public void removeUser( int id) {
+        String sql="delete from user where id=?";
+        jdbcTemplate.update(sql,id);
+    }
+
+
+    @Override
+    public void modifyUser(int id,User user) {
+        String sql="update user set username=?,password=? where id=?";
+        jdbcTemplate.update(sql,user.getUsername(),user.getPassword(),id);
     }
 }
 
