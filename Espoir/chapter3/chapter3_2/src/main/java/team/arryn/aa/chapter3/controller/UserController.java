@@ -12,11 +12,13 @@ public class UserController {
 
     private UserService userService=new UserServiceImpl();
 
+    @ResponseBody
     @PostMapping("add")
-    public Result loginController(User user){
+    public Result loginController(@RequestBody User user){
         return userService.addUser(user);
     }
 
+    @ResponseBody
     @GetMapping("{id}")
     public Result selectUser(@PathVariable("id") int id) throws Exception {
         return userService.getUserByUsername(id);
@@ -27,8 +29,9 @@ public class UserController {
         return userService.delUser(id);
     }
 
+    @ResponseBody
     @PutMapping("{id}")
-    public Result updateUser(@PathVariable("id") int id, User user) {
+    public Result updateUser(@PathVariable("id") int id, @RequestBody User user) {
         return userService.updateUser(id,user);
     }
 }
