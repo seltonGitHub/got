@@ -19,7 +19,6 @@ public class JDBCUtils {
         //加载配置文件
         Properties pro = new Properties();
         InputStream is=JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties");
-        System.out.println(is);
         try {
             pro.load(is);
             //获取数据源

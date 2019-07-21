@@ -1,5 +1,6 @@
 package team.arryn.aa.chapter3.dao.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import team.arryn.aa.chapter3.dao.UserDao;
