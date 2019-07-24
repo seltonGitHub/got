@@ -7,4 +7,6 @@ public class User {
     private int id;
 
     // other field
+    private String name;
+    private String hobby;
 }

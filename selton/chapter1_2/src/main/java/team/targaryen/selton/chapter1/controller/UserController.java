@@ -1,9 +1,12 @@
 package team.targaryen.selton.chapter1.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import team.targaryen.selton.chapter1.VO.ResponseInfo;
 import team.targaryen.selton.chapter1.entity.User;
+import team.targaryen.selton.chapter1.service.IUserService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +15,9 @@ import java.util.Map;
 @RequestMapping("user")
 @Slf4j
 public class UserController {
+
+    @Autowired
+    private IUserService userService;
 
     private static Map<Long, User> userIdAndUserMap = new HashMap<>();
 
@@ -23,9 +29,11 @@ public class UserController {
     }
 
     @PostMapping("add")
-    public ResponseInfo addUser(User user) {
-        log.debug("this is debug log : addUser user {}", user);
-        log.info("this is info log: addUser user {}", user);
+    @Transactional
+    public ResponseInfo addUser(@RequestBody User user) {
+        log.info("add user {}", user);
+        int i = userService.addUser(user);
+        log.info("success add {} user.", i);
         // save user
         return new ResponseInfo();
     }

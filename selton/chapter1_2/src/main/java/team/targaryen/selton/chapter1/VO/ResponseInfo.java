@@ -10,6 +10,5 @@ public class ResponseInfo {
 
     public ResponseInfo() {
         this.status = 200;
-        this.data = new Object();
     }
 }

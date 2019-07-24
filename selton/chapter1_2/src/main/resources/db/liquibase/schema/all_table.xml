@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="T100-20190724-1" author="selton">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT(20)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"  />
+            </column>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="hobby" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="T100-20190724-2" author="selton">
+        <loadData tableName="user" file="db/liquibase/predata/user.csv">
+            <column name="name" type="STRING"/>
+            <column name="hobby" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
