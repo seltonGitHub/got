@@ -8,9 +8,6 @@ import team.targaryen.selton.chapter1.VO.ResponseInfo;
 import team.targaryen.selton.chapter1.entity.User;
 import team.targaryen.selton.chapter1.service.IUserService;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @RequestMapping("user")
 @Slf4j
@@ -19,13 +16,11 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    private static Map<Long, User> userIdAndUserMap = new HashMap<>();
-
     //当访问这个接口时 这块代码将会抛出名为 Exception 的异常  并携带着一些异常信息 也就是 a exception occur
     //这个异常会被我们的异常捕获器捕捉到 也就是将会跳转到 GlobalExceptionHandler 的 jsonErrorHandler中处理
     @GetMapping("{id}")
     public User getUserByName(@PathVariable("id") long id) throws Exception {
-        throw new Exception("a exception occur");
+        return userService.findById((int) id);
     }
 
     @PostMapping("add")
@@ -44,16 +39,19 @@ public class UserController {
         int successRemoveNum = 0;
 
         // remove user
+        userService.deleteById((int) id);
 
         return successRemoveNum;
     }
 
     @PutMapping("{id}")
-    public int modifyUser(User user) {
+    public int modifyUser(@PathVariable("id") int id, @RequestBody User user) {
+        user.setId(id);
         //成功修改的用户数量
         int successRemoveNum = 0;
 
        // modify user
+        userService.updateOne(user);
 
        return successRemoveNum;
     }

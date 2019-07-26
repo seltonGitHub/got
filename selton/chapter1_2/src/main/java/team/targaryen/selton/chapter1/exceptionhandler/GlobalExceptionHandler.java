@@ -1,5 +1,6 @@
 package team.targaryen.selton.chapter1.exceptionhandler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,6 +9,7 @@ import team.targaryen.selton.chapter1.VO.ResponseInfo;
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     //统一异常处理
@@ -17,6 +19,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ResponseInfo jsonErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+        log.error("occur error {}.", e);
         ResponseInfo responseInfo = new ResponseInfo();
         //500一般表示后台出错
         responseInfo.setStatus(500);
