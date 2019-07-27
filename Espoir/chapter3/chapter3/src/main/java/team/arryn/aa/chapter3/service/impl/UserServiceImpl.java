@@ -16,11 +16,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result addUser(User user) {
         Result result = new Result();
-        if (user==null && "".equals(user.getUsername())){
+        if (user==null && "".equals(user.getName())){
             result.setStatus(200);
             result.setData("用户名为空");
         }else {
-            userDao.addUser(user);
+            userDao.save(user);
             result.setStatus(200);
             result.setData("ok");
         }
@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result getUserById(int  id) {
+    public Result getUserById(Long id) {
         Result result = new Result();
-        User user = userDao.getUserById(id);
+        User user = userDao.findOne(id);
         if (user==null){
             result.setStatus(200);
             result.setData("用户不存在");
@@ -42,16 +42,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result delUser(int id) {
-        userDao.removeUser(id);
+    public Result delUser(Long id) {
+        userDao.delete(id);
         return new Result("ok");
     }
 
     @Override
     public Result updateUser(User user) {
-        userDao.modifyUser(user);
+        userDao.save(user);
         return new Result("ok");
     }
-
-
 }

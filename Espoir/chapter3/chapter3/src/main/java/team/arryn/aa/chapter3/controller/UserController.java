@@ -21,13 +21,13 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("{id}")
-    public Result selectUser(@PathVariable("id") int id) {
+    public Result selectUser(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
     @ResponseBody
     @DeleteMapping("{id}")
-    public Result delUser(@PathVariable("id") int id) {
+    public Result delUser(@PathVariable("id") Long id) {
         return userService.delUser(id);
     }
 
