@@ -1,10 +1,11 @@
-package team.targaryen.selton.chapter1.exceptionhandler;
+package team.targaryen.selton.chapter1.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.targaryen.selton.chapter1.VO.ResponseInfo;
+import team.targaryen.selton.chapter1.exception.message.MessageUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,7 +24,7 @@ public class GlobalExceptionHandler {
         ResponseInfo responseInfo = new ResponseInfo();
         //500一般表示后台出错
         responseInfo.setStatus(500);
-        responseInfo.setData(e.getMessage());
+        responseInfo.setData(MessageUtils.getMsg(e.getMessage()));
 
         //这个返回结果替代了controller中的返回结果(因为controller中出现了异常 所以controller无法返回结果)
         return responseInfo;
